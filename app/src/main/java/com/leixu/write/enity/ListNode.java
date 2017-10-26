@@ -63,35 +63,35 @@ public class ListNode {
 
 
 
-//    public static void main(String[] args) {
-//
-//        ListNode head = new ListNode(0);
-//        ListNode node1 = new ListNode(1);
-//        ListNode node2 = new ListNode(2);
-//        ListNode node3 = new ListNode(3);
-//
-//        head.setNext(node1);
-//        node1.setNext(node2);
-//        node2.setNext(node3);
-//
-//        // 打印反转前的链表
-//        ListNode h = head;
-//        while (null != h) {
-//            System.out.print(h.getVal() + " ");
-//            h = h.getNext();
-//        }
-//        // 调用反转方法
-//        // head = reverse1(head);
-//        head = reverseList(head);
-//
-//        System.out.println("\n**************************");
-//        // 打印反转后的结果
-//        while (null != head) {
-//            System.out.print(head.getVal() + " ");
-//            head = head.getNext();
-//        }
-//
-//    }
+    public static void main(String[] args) {
+
+        ListNode head = new ListNode(0);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+
+        head.setNext(node1);
+        node1.setNext(node2);
+        node2.setNext(node3);
+
+        // 打印反转前的链表
+        ListNode h = head;
+        while (null != h) {
+            System.out.print(h.getVal() + " ");
+            h = h.getNext();
+        }
+        // 调用反转方法
+        // head = reverse1(head);
+        head = reverseList(head);
+
+        System.out.println("\n**************************");
+        // 打印反转后的结果
+        while (null != head) {
+            System.out.print(head.getVal() + " ");
+            head = head.getNext();
+        }
+
+    }
 
 
 }

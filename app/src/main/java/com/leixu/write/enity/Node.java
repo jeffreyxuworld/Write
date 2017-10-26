@@ -2,7 +2,7 @@ package com.leixu.write.enity;
 
 /**
  * Created by Lei on 2017/10/25.
- *
+ * 单向链表
  */
 
 public class Node {

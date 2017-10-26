@@ -2,7 +2,7 @@ package com.leixu.write.util;
 
 /**
  * Created by Lei on 2017/10/26.
- *
+ *  各种排序算法
  */
 
 public class SortUtil {
@@ -11,7 +11,9 @@ public class SortUtil {
     public static void main(String[] args){
 //        directInsert();
 
-        DichotomyInsert();
+//        dichotomyInsert();
+
+        hillSort();
     }
 
 
@@ -21,7 +23,7 @@ public class SortUtil {
      * 若初态为反序，则第i个待插入记录需要比较i+1次才能找到合适位置插入，故时间复杂度为O(n2)，这时最坏的情况。
      　　直接插入排序的平均时间复杂度为O(n2)。
      */
-    private static void directInsert(){
+    private static void directInsertSort(){
         int[] a = {49,38,65,97,76,13,27,49,78,34,12,64,1};
             System.out.println("排序之前：");
             for (int i = 0; i < a.length; i++) {
@@ -60,7 +62,7 @@ public class SortUtil {
      * 二分插入排序的比较次数与待排序记录的初始状态无关，仅依赖于记录的个数。当n较大时，比直接插入排序的最大比较次数少得多。但大于直接插入排序的最小比较次数。
      * 算法的移动次数与直接插入排序算法的相同，最坏的情况为n2/2，最好的情况为n，平均移动次数为O(n2)。
      */
-    private static void DichotomyInsert(){
+    private static void dichotomyInsertSort(){
         int[] a = {49,38,65,97,176,213,227,49,78,34,12,164,11,18,1};
         System.out.println("排序之前：");
         for (int i = 0; i < a.length; i++) {
@@ -99,6 +101,46 @@ public class SortUtil {
 
     }
 
+    /**
+     * 希尔排序 （不稳定）
+     * 先取一个小于n的整数d1作为第一个增量，把文件的全部记录分成d1个组。所有距离为d1的倍数的记录放在同一个组中。先在各组内进行直接插入排序；
+     * 然后，取第二个增量d2<d1重复上述的分组和排序，直至所取的增量dt=1(dt<dt-l<…<d2<d1)，即所有记录放在同一组中进行直接插入排序为止。该方法实质上是一种分组插入方法。
+     */
+    public static void hillSort(){
+        int[] a = {49,38,65,97,76,13,27,49,78,34,12,64,1};
+        System.out.println("排序之前：");
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i]+" ");
+        }
+        //希尔排序
+        int d = a.length;
+        while(true){
+            d = d / 2;
+            for(int x=0;x<d;x++){
+                for(int i=x+d;i<a.length;i=i+d){
+                    int temp = a[i];
+                    int j;
+                    for(j=i-d;j>=0&&a[j]>temp;j=j-d){
+                        a[j+d] = a[j];
+                    }
+                    a[j+d] = temp;
+
+                }
+            }
+
+            if(d == 1){
+                break;
+            }
+
+        }
+
+        System.out.println();
+        System.out.println("排序之后：");
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i]+" ");
+        }
+
+    }
 
 
 
