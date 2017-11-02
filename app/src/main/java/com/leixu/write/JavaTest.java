@@ -1,6 +1,7 @@
 package com.leixu.write;
 
 import com.leixu.write.enity.Node;
+import com.leixu.write.util.FindShortestBTPath;
 
 /**
  * Created by Lei on 2017/10/25.
@@ -12,32 +13,34 @@ public class JavaTest {
 
     public static void main(String[] args) {
 
-        Node head = new Node(0);
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        head.setNext(node1);
-        node1.setNext(node2);
-        node2.setNext(node3);
-
-        // 打印反转前的链表
-        Node h = head;
-        while (null != h) {
-            System.out.print(h.getData() + " ");
-            h = h.getNext();
-        }
-        // 调用反转方法
-        head = reverse2(head);
-
-        System.out.println("\n**************************");
-        // 打印反转后的结果
-        while (null != head) {
-            System.out.print(head.getData() + " ");
-            head = head.getNext();
-        }
+//        Node head = new Node(0);
+//        Node node1 = new Node(1);
+//        Node node2 = new Node(2);
+//        Node node3 = new Node(3);
+//        head.setNext(node1);
+//        node1.setNext(node2);
+//        node2.setNext(node3);
+//
+//        // 打印反转前的链表
+//        Node h = head;
+//        while (null != h) {
+//            System.out.print(h.getData() + " ");
+//            h = h.getNext();
+//        }
+//        // 调用反转方法
+//        head = reverse2(head);
+//
+//        System.out.println("\n**************************");
+//        // 打印反转后的结果
+//        while (null != head) {
+//            System.out.print(head.getData() + " ");
+//            head = head.getNext();
+//        }
 
 
 //        System.out.println("\n**************************");
+
+
 
     }
 
