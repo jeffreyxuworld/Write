@@ -2,6 +2,14 @@ package com.leixu.write;
 
 import com.leixu.write.enity.Node;
 import com.leixu.write.util.FindShortestBTPath;
+import com.leixu.write.util.StringOperator;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Created by Lei on 2017/10/25.
@@ -41,6 +49,25 @@ public class JavaTest {
 //        System.out.println("\n**************************");
 
 
+//        countPeople();
+
+
+        //约瑟夫问题
+//        Scanner s = new Scanner(System.in);
+//        System.out.print("请输入总人数：");
+//        int totalNum = s.nextInt();
+//        System.out.print("请输入报数大小：");
+//        int cycleNum = s.nextInt();
+//        s.close();
+//        int a = josephusProblem(totalNum, cycleNum);
+//        System.out.println("最后一个人的序号：" + a);
+
+
+//        System.out.println(StringOperator.getFirstStr1("alibaba"));
+//        System.out.println(StringOperator.getFirstStr1("taobao"));
+//        System.out.println(StringOperator.getFirstStr1("aabbc"));
+
+        StringOperator.getFirstStr2("aabbc");
 
     }
 
@@ -82,5 +109,79 @@ public class JavaTest {
 
         return pre;
     }
+
+
+    /**
+     * 标号1-n的n个人首尾相接，1到3报数，报到3的退出，求最后一个人的标号
+     */
+    public static void countPeople() {
+        int arr[] = new int[101];//报数从1开始所以数组大小为n+1
+        int n=100, m=3;
+
+        int i;
+        int dead = 0;   //表示已经死了多少人
+        int num = 0;    //num模拟报数
+        for (i = 1;i<= n; i++) {
+            //开始时每个人都可以报数，为了能得到最后一个人的编号，我们让初始值为i下标
+            arr[i] = i;
+        }
+
+        for (i = 1;; i++){
+            if (i > n) {
+                //如果大于总人数，我们就从头开始
+                i = i%n;
+            }
+
+            if (arr[i] > 0){
+                //如果当前这个人没有死，就报数
+                num++;
+            }
+
+            if (m == num && dead != n-1){
+                //如果当前这个人报的数等于m 并且没有已经死亡n-1个人
+                num = 0;
+                arr[i] = 0;
+                dead++;
+            } else if(m == num && dead == n-1){
+                //如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个活着的了。
+                System.out.print(arr[i]+"");
+                break;
+            }
+
+        }
+
+    }
+
+
+    /**
+     * 约瑟夫问题
+     * @param n
+     * @param m
+     * @return
+     */
+    public static int josephusProblem(int n, int m) {
+        if(n == 0 || m == 0)
+            return -1;
+        if(n == 1 && m == 1)
+            return -1;
+        List<Integer> alist = new ArrayList<Integer>();
+        for(int i = 0; i < n; i++)
+            alist.add(i);
+        //初值设为-1，
+        int index = -1;
+        while(alist.size() > 1){
+            index = (index+m)%alist.size();
+            alist.remove(index);
+            //从上一个位置开始计数
+            index--;
+        }
+        return alist.get(0);
+
+
+    }
+
+
+
+
 
 }
